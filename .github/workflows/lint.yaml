@@ -1,0 +1,14 @@
+name: Run Linters
+on:
+  - pull_request
+  - push
+jobs:
+  lints:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: cachix/install-nix-action@v10
+        with:
+          skip_adding_nixpkgs_channel: true
+      - run: nix-shell --run "eslint *.js"
+      - run: nix-shell --run "prettier -l *.{js,md}"
