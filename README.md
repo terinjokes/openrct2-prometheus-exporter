@@ -36,6 +36,25 @@ change until version 1.0.0.
 Yes, these metrics names are bad and don't follow the [naming best practices]. I
 consider this to be a bug.
 
+## Development
+
+This plugin is maintained in a single file, [index.js](./index.js). While
+unusal, this allows me to keep the number of dependencies to a minimium and
+makes it easy for users to install into their copy of OpenRCT2. (This is
+inspired by the reasoning behind the C [single-file libraries][sfl] list).
+
+This plugin should be written to target EcmaScript 5 only, with no extensions.
+The plugin environment in OpenRCT2 is not a modern browser nor Node.js
+installation, and thus only ES5 is reliably available. This policy may change if
+and when OpenRCT2 upgrades and enables later feature sets of Duktape.
+
+This project uses specific versions and configurations of Prettier and ESLint
+using [Nix]. Once installed, you'll be able to use these versions by running
+`nix-shell`. You can also use a Docker container, similar to the GitHub Actions
+configuration.
+
 [networking-api]: https://github.com/OpenRCT2/OpenRCT2/blob/96d1db97e0bbc689ef9d5d48ee2514bec7c5c7f8/distribution/scripting.md#:~:text=Can%20plugins%20communicate%20with%20other%20processes,%20or%20the%20internet?
 [scripting]: https://github.com/OpenRCT2/OpenRCT2/blob/96d1db97e0bbc689ef9d5d48ee2514bec7c5c7f8/distribution/scripting.md#scripts-for-openrct2
 [naming best practices]: https://prometheus.io/docs/practices/naming/
+[nix]: https://nixos.org/manual/nix/stable/#chap-introduction
+[sfl]: https://github.com/nothings/single_file_libs#single-file-public-domainopen-source-libraries-with-minimal-dependencies
