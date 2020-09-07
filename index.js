@@ -71,10 +71,7 @@
         duck_count.set(ducks.length);
 
         peeps.forEach(function (peep) {
-          if (
-            peep.peepType === "guest" &&
-            peep.getFlag("hasPaidForParkEntry")
-          ) {
+          if (peep.peepType === "guest") {
             guest_count.inc(1);
           } else if (peep.peepType === "staff") {
             staff_count.inc(1);
