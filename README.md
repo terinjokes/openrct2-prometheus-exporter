@@ -1,5 +1,8 @@
 # OpenRCT2 Prometheus Exporter
 
+![consolelog on Twitch](https://img.shields.io/twitch/status/consolelog?logo=twitch&logoColor=white&style=flat-square)
+![Ecologi (Trees)](https://img.shields.io/ecologi/trees/terinjokes?label=planted%20trees&style=flat-square)
+
 An OpenRCT2 plugin that exports Prometheus metrics for a (limited but growing)
 set of park metrics.
 
@@ -53,8 +56,22 @@ using [Nix]. Once installed, you'll be able to use these versions by running
 `nix-shell`. You can also use a Docker container, similar to the GitHub Actions
 configuration.
 
+## Twitch Livestreams
+
+You can catch me working on this, or other programming projects, as
+[\@consolelog][twitch] on Twitch. Fill free to come by and ask questions!
+
+## Donations
+
+![OpenRCT2 trees scenery window](./trees.png)
+
+If you enjoy using this plugin, I ask that you plant some trees on
+[Ecologi][ecologi] to help offset and reduce our carbon impact.
+
 [networking-api]: https://github.com/OpenRCT2/OpenRCT2/blob/96d1db97e0bbc689ef9d5d48ee2514bec7c5c7f8/distribution/scripting.md#:~:text=Can%20plugins%20communicate%20with%20other%20processes,%20or%20the%20internet?
 [scripting]: https://github.com/OpenRCT2/OpenRCT2/blob/96d1db97e0bbc689ef9d5d48ee2514bec7c5c7f8/distribution/scripting.md#scripts-for-openrct2
 [naming best practices]: https://prometheus.io/docs/practices/naming/
 [nix]: https://nixos.org/manual/nix/stable/#chap-introduction
 [sfl]: https://github.com/nothings/single_file_libs#single-file-public-domainopen-source-libraries-with-minimal-dependencies
+[twitch]: https://twitch.tv/consolelog
+[ecologi]: https://ecologi.com/terinjokes
