@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var port = 9751;
+  var port, enabled;
 
   registerPlugin({
     name: "openrct2-prometheus-exporter",
@@ -14,10 +14,102 @@
   });
 
   function main() {
+    port = context.sharedStorage.get("prometheus.port", 9751);
+    enabled = context.sharedStorage.get("prometheus.enabled", true);
+
     var registry = new Registry();
     ParkCollector(registry);
 
-    httpServer(registry);
+    if (enabled) {
+      httpServer(registry);
+    }
+
+    if (ui) {
+      ui.registerMenuItem("Prometheus Exporter Configuration", function () {
+        var localPort = port;
+        var localEnabled = enabled;
+        var spinner = {
+          type: "spinner",
+          x: 70,
+          y: 20,
+          width: 200,
+          height: 10,
+          text: localPort.toString(),
+          name: "port",
+          onClick: function () {
+            console.log("got onclick");
+          },
+          onDecrement: function () {
+            localPort -= 1;
+          },
+          onIncrement: function () {
+            localPort += 1;
+          },
+        };
+
+        var save = {
+          type: "button",
+          x: 200,
+          y: 70,
+          width: 70,
+          height: 10,
+          text: "Save",
+          name: "save-button",
+          onClick: function () {
+            port = localPort;
+            enabled = localEnabled;
+            context.sharedStorage.set("prometheus.port", localPort);
+            context.sharedStorage.set("prometheus.enabled", localEnabled);
+            window.close();
+          },
+        };
+
+        var enabledCheckbox = {
+          type: "checkbox",
+          x: 70,
+          y: 40,
+          width: 10,
+          height: 10,
+          isChecked: localEnabled,
+          onChange: function (isChecked) {
+            localEnabled = isChecked;
+          },
+        };
+
+        var window = ui.openWindow({
+          title: "Prometheus Exporter Configuration",
+          id: 1,
+          classification: "prom-exporter",
+          width: 300,
+          height: 100,
+          widgets: [
+            {
+              type: "label",
+              x: 10,
+              y: 20,
+              width: 50,
+              height: 10,
+              text: "Port:",
+            },
+            spinner,
+            {
+              type: "label",
+              x: 10,
+              y: 40,
+              width: 50,
+              height: 10,
+              text: "Enabled?",
+            },
+            enabledCheckbox,
+            save,
+          ],
+          onUpdate: function () {
+            var widget = window.findWidget("port");
+            widget.text = localPort.toString();
+          },
+        });
+      });
+    }
   }
 
   function httpServer(registry) {
