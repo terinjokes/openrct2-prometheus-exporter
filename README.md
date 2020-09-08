@@ -26,15 +26,17 @@ configurable soon.
 The following metrics are available. Metric names and labels are subject to
 change until version 1.0.0.
 
-| metric        | type  | stability | labels |
-| ------------- | ----- | --------- | ------ |
-| park_cash     | gauge | unstable  | park   |
-| park_rating   | gauge | unstable  | park   |
-| park_bankLoan | gauge | unstable  | park   |
-| guest_count   | gauge | unstable  | park   |
-| staff_count   | gauge | unstable  | park   |
-| peep_count    | gauge | unstable  | park   |
-| duck_count    | gauge | unstable  | park   |
+| metric                  | type  | stability | labels |
+| ----------------------- | ----- | --------- | ------ |
+| park_cash               | gauge | unstable  | park   |
+| park_entrance_fee_cash  | gauge | unstable  | park   |
+| park_bank_loan_cash     | gauge | unstable  | park   |
+| park_max_bank_loan_cash | gauge | unstable  | park   |
+| park_rating             | gauge | unstable  | park   |
+| guests                  | gauge | unstable  | park   |
+| staff                   | gauge | unstable  | park   |
+| peeps                   | gauge | unstable  | park   |
+| ducks                   | gauge | unstable  | park   |
 
 Yes, these metrics names are bad and don't follow the [naming best practices]. I
 consider this to be a bug.
